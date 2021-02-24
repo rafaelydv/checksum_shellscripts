@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Script para fazer a verificação do hash's MD5, SHA256 e SHA512 de arquivos iso's baixados da internet
+# Script para fazer a verificação do hash MD5, SHA256 e SHA512 de arquivos iso's baixados da internet
 
 read -p "Informe o arquivo ISO a ser verificado: " arquivoiso
 echo "${arquivoiso:?Atenção você deve informar a localização da ISO\!}"
@@ -28,7 +28,7 @@ case "$OPCAO" in
 		hash3=$(md5sum $arquivoiso)
 		hash2=$(echo ${hash3:0:32})
 		# Realizando a comparação dos Hash's
-		[ ${hash1} = ${hash2} ] && echo "Os Hash's são iguais!" || echo "Os Hash's são diferentes!"
+		[ "$hash1" = "$hash2" ] && echo "Os Hash's são iguais!" || echo "Os Hash's são diferentes!"
 	;;
 
 	2)
@@ -36,7 +36,7 @@ case "$OPCAO" in
 		hash3=$(sha256sum $arquivoiso)
 		hash2=$(echo ${hash3:0:64})
 		# Realizando a comparação dos Hash's
-		[ ${hash1} = ${hash2} ] && echo "Os Hash's são iguais!" || echo "Os Hash's são diferentes!"
+		[ "$hash1" = "$hash2" ] && echo "Os Hash's são iguais!" || echo "Os Hash's são diferentes!"
 	;;
 
 	3)
@@ -44,7 +44,7 @@ case "$OPCAO" in
 		hash3=$(sha512sum $arquivoiso)
 		hash2=$(echo ${hash3:0:128})
 	 	# Realizando a comparação dos Hash's
-		[ ${hash1} = ${hash2} ] && echo "Os Hash's são iguais!" || echo "Os Hash's são diferentes!"
+		[ "$hash1" = "$hash2" ] && echo "Os Hash's são iguais!" || echo "Os Hash's são diferentes!"
 	;;
 	
 	*)	
