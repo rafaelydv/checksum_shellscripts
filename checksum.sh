@@ -1,8 +1,18 @@
 #!/bin/bash
 #
-# Script para fazer a verificação do hash MD5, SHA256 e SHA512 de arquivos iso's baixados da internet
-
-read -p "Informe o arquivo ISO a ser verificado: " arquivoiso
+:<<COMENTARIO
+Script interativo para fazer a verificação de hash's MD5, SHA256 e SHA512 de arquivos iso's baixados da
+internet. Ao executá-lo, será solicitado ao usuário que informe o caminho ABSOLUTO do arquivo ISO cuja
+HASH será calculada. Depois será solicitado que seja informada a HASH que será comparada com a HASH
+gerada do arquivo ISO. Após informar esses 2 parâmetros, o script vai exibir um menu para ser escolhido
+um tipo para que seja realizado o calculo e a comparação dos HASH's. Até o momento o script trabalha com
+apenas 3 tipos de HASH's, estes são os mais comumente utilizados para verificação dos arquivos ISO's
+em várias distribuições. Se for necessário, futuramente o suporte a outros tipos de HASH's podem ser
+incluídos no script. No entanto, se o usuário possuir conhecimentos básicos de shellscript, basta
+alterar o script para incluir os HASH's desejados no menu e dentro do bloco CASE.
+COMENTARIO
+#
+read -p "Informe o caminho do arquivo ISO a ser verificado: " arquivoiso
 echo "${arquivoiso:?Atenção você deve informar a localização da ISO\!}"
 echo
 read -p "Informe a Hash a ser comparada: " hash1
