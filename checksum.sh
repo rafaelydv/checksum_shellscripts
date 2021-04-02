@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 :<<COMENTARIO
 Script interativo para fazer a verificação de hash's MD5, SHA256 e SHA512 de arquivos iso's baixados da
