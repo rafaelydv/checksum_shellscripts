@@ -13,10 +13,10 @@ alterar o script para incluir os HASH's desejados no menu e dentro do bloco CASE
 COMENTARIO
 #
 read -p "Informe o caminho do arquivo ISO a ser verificado: " arquivoiso
-echo "${arquivoiso:?Atenção você deve informar a localização da ISO\!}"
+echo -e "${arquivoiso:?Atenção você deve informar a localização da ISO\!} \n"
 echo
 read -p "Informe a Hash a ser comparada: " hash1
-echo "${hash1:?Atenção você deve informar a Hash a ser comparada\!}"
+echo -e "${hash1:?Atenção você deve informar a Hash a ser comparada\!}\n"
 echo
 
 MENU="
@@ -38,7 +38,7 @@ case "$OPCAO" in
 		hash3=$(md5sum $arquivoiso)
 		hash2=$(echo ${hash3:0:32})
 		# Realizando a comparação dos Hash's
-		[ "$hash1" = "$hash2" ] && echo "Os Hash's são iguais!" || echo "Os Hash's são diferentes!"
+		[ "$hash1" = "$hash2" ] && echo -e "Os Hash's são iguais! \n" || echo -e "Os Hash's são diferentes! \n"
 	;;
 
 	2)
@@ -46,7 +46,7 @@ case "$OPCAO" in
 		hash3=$(sha256sum $arquivoiso)
 		hash2=$(echo ${hash3:0:64})
 		# Realizando a comparação dos Hash's
-		[ "$hash1" = "$hash2" ] && echo "Os Hash's são iguais!" || echo "Os Hash's são diferentes!"
+		[ "$hash1" = "$hash2" ] && echo -e "Os Hash's são iguais!\n" || echo -e "Os Hash's são diferentes! \n"
 	;;
 
 	3)
@@ -54,11 +54,11 @@ case "$OPCAO" in
 		hash3=$(sha512sum $arquivoiso)
 		hash2=$(echo ${hash3:0:128})
 	 	# Realizando a comparação dos Hash's
-		[ "$hash1" = "$hash2" ] && echo "Os Hash's são iguais!" || echo "Os Hash's são diferentes!"
+		[ "$hash1" = "$hash2" ] && echo -e "Os Hash's são iguais! \n" || echo -e "Os Hash's são diferentes! \n"
 	;;
 	
 	*)	
-		echo "Opção inválida!"
+		echo -e "Opção inválida! \n"
 		exit 1
 	;;
 esac
